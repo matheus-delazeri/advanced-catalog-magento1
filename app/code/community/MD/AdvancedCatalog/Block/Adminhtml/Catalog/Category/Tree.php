@@ -4,7 +4,7 @@ class MD_AdvancedCatalog_Block_Adminhtml_Catalog_Category_Tree extends Mage_Admi
 {
     public function __construct()
     {
-        $this->setTemplate("advancedcatalog/catalog/category/tree.phtml");
+        $this->setTemplate("md/advancedcatalog/catalog/category/tree.phtml");
     }
 
     /**

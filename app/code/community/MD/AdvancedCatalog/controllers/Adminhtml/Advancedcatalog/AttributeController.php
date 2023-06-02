@@ -9,7 +9,7 @@ class MD_AdvancedCatalog_Adminhtml_Advancedcatalog_AttributeController extends M
 
     public function saveAction()
     {
-        $attribute = Mage::app()->getRequest()->getParam("");
+        $attribute = Mage::app()->getRequest()->getParam("attribute");
         Mage::getModel("advancedcatalog/attribute")->create($attribute);
         $this->_redirectReferer();
     }
