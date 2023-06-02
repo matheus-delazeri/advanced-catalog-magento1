@@ -10,6 +10,12 @@
   <summary>Summary</summary>
   <ol>
     <li>
+      <a href="#-installing"> 🔧 Installing</a>
+    </li>
+    <li>
+      <a href="#-languages-supported"> 🌎 Languages supported</a>
+    </li>
+    <li>
       <a href="#%EF%B8%8F-an-easier-way-to-manage-your-catalog"> ✔️ An easier way to manage your catalog!</a>
        <ol>
     <li>
@@ -48,6 +54,10 @@
 ## 🔧 Installing
 
 Copy all files to it's respective path in our Magento root folder
+
+## 🌎 Languages supported
+- 🇺🇸 en-US
+- 🇧🇷 pt-BR
 
 <!-- ABOUT THE PROJECT -->
 ## ✔️ An easier way to manage your catalog!
