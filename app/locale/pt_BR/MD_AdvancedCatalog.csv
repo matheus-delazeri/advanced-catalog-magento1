@@ -1,0 +1,55 @@
+Advanced Catalog,Catálogo Avançado
+[Additional] Sort by,[Adicional] Ordenar por
+Most Recent,Mais Recente
+Product Listing,Listagem de Produtos
+Use default sorting,Usar ordens padrão
+Out of Stock last,Sem estoque por último
+Active,Habilitar
+Name A-Z,Nome A-Z
+Name Z-A,Nome Z-A
+Higher Price,Maior Preço
+Lower Price,Menor Preço
+Settings,Configurações
+Advanced Quick Create,Criação Rápida Avançada
+Configurable Products,Produtos Configuráveis
+New Attribute,Novo Atributo
+Label,Nome
+Code,Código
+Missing fields: [%s],Os seguintes campos não podem estar vazios: [%s]
+Attribute code [%s] already exists,Já existe um atributo cadastrado com o código [%s]
+Attribute [%s] successfully created!,Atributo [%s] criado com sucesso!
+All associative attributes must be filled to create associated products,Todos os atributos associativos devem ser preenchidos para criação de produtos associados
+SKU already exists [%s],SKU já existe [%s]
+Combination %s already associated to this product,Combinação %s já associada a este produto
+Weight,Peso em Kg
+Associated products weight can't be empty or 0,O peso dos produtos associados deve ser maior que zero!
+[Admin] Product Listing,[Admin] Listagem de Produtos
+Display Image,Exibir Imagem
+"When enabled, product's images will be displayed at product's grid",Caso esteja habilitado as fotos dos produtos serão exibidas nas listas do painel administrativo
+Image Field,Campo da Imagem
+Bulk Delete Categories,Excluir Categorias
+Delete Selected Categories,Excluir Categorias Selecionadas
+Successfully deleted categories!,Categorias excluídas com sucesso!
+An error occurred while trying to delete categories,"Não foi possível excluir as categorias, tente novamente!"
+Products Categories,Categorias de Produtos
+Filter style mode,Estilo da filtragem
+Accordion,Colapsar
+Default,Padrão
+[Admin] Create Product,[Admin] Criação de Produtos
+Quick Create Configurable,Criação Rápida de Configuráveis
+Custom SEO,SEO Personalizado
+[SEO] Title,[SEO] Título
+[SEO] Description,[SEO] Descrição
+[SEO] Keywords,[SEO] Palavras-chave
+[SEO] Exclude Keywords,[SEO] Excluir Palavras-chave
+"Add words (separated by ',') that will NOT be used as keyword","Insira palavras (separadas por ',') que NÃO serão utilizadas como palavras-chave"
+Responsive Filters,Filtros responsivos
+Required attributes can't be empty,Atributos obrigatórios não podem estar vazios
+Required Attributes,Atributos Obrigatórios
+Association Attributes,Atributos de Associação
+Insert an option for <b>%s</b> and press <b><kbd>Enter</kbd></b> to add it,Adicione uma opção para <b>%s</b> e pressione <b><kbd>Enter</kbd></b> para adicioná-la!
+Additional Attributes,Atributos Adicionais
+Non required attribute that will be used in associated product’s creation,Atributo não obrigatório que será utilizado na criação dos produtos associados
+Above weight will be applied to all new associated products.,O peso acima será utilizado na criação dos produtos associados
+Tools,Ferramentas
+Associated Products - %s, Produtos Associados - %s

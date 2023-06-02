@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <md_advancedcatalog translate="title" module="advancedcatalog">
+                                        <title>Advanced Catalog</title>
+                                        <sort_order>100</sort_order>
+                                    </md_advancedcatalog>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

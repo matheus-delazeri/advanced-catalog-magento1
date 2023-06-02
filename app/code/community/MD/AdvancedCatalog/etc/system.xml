@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <md translate="label" module="advancedcatalog">
+            <label><![CDATA[MD Modules]]></label>
+            <sort_order>0</sort_order>
+        </md>
+    </tabs>
+    <sections>
+        <md_advancedcatalog translate="label" module="advancedcatalog">
+            <label>Advanced Catalog</label>
+            <tab>md</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <list translate="label">
+                    <label>Product Listing</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <orders translate="label">
+                            <label>[Additional] Sort by</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>advancedcatalog/list_order</source_model>
+                        </orders>
+                        <out_of_stock_last translate="label">
+                            <label>Out of Stock last</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </out_of_stock_last>
+                    </fields>
+                </list>
+                <admin_list translate="label">
+                    <label>[Admin] Product Listing</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_image translate="label">
+                            <label>Display Image</label>
+                            <comment>When enabled, product's images will be displayed at product's grid</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_image>
+                        <image_field translate="label">
+                            <label>Image Field</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <show_image>1</show_image>
+                            </depends>
+                            <source_model>advancedcatalog/system_config_imagefields</source_model>
+                        </image_field>
+                    </fields>
+                </admin_list>
+                <admin_create_product>
+                    <label>[Admin] Create Product</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <quick_configurable translate="label">
+                            <label>Quick Create Configurable</label>
+                            <comment>Allows the creation of configurable's associated products using only the association attributes
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </quick_configurable>
+                        <quick_configurable_custom_attributes translate="label">
+                            <label>[Quick Create Configurable] Custom Attributes</label>
+                            <comment>Non required attributes that will be used to create associated products
+                            </comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>advancedcatalog/system_config_quick_associated_customattributes</source_model>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><quick_configurable>1</quick_configurable></depends>
+                        </quick_configurable_custom_attributes>
+                        <custom_meta translate="label">
+                            <label>Custom SEO</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </custom_meta>
+                        <custom_meta_title translate="label">
+                            <label>[SEO] Title</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <custom_meta>1</custom_meta>
+                            </depends>
+                        </custom_meta_title>
+                        <custom_meta_description translate="label">
+                            <label>[SEO] Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <custom_meta>1</custom_meta>
+                            </depends>
+                        </custom_meta_description>
+                        <custom_meta_keyword translate="label">
+                            <label>[SEO] Keywords</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <custom_meta>1</custom_meta>
+                            </depends>
+                        </custom_meta_keyword>
+                        <custom_meta_keyword_exclude translate="label">
+                            <label>[SEO] Exclude Keywords</label>
+                            <comment>Add words (separated by ',') that will NOT be used as keyword</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <custom_meta>1</custom_meta>
+                            </depends>
+                        </custom_meta_keyword_exclude>
+                    </fields>
+                </admin_create_product>
+            </groups>
+        </md_advancedcatalog>
+    </sections>
+</config>

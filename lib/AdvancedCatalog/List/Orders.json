@@ -1,0 +1,32 @@
+[
+  {
+    "order": "most_recent",
+    "attribute": "entity_id",
+    "label": "Most Recent",
+    "direction": "desc"
+  },
+  {
+    "order": "name_az",
+    "attribute": "name",
+    "label": "Name A-Z",
+    "direction": "asc"
+  },
+  {
+    "order": "name_za",
+    "attribute": "name",
+    "label": "Name Z-A",
+    "direction": "desc"
+  },
+  {
+    "order": "higher_price",
+    "attribute": "price",
+    "label": "Higher Price",
+    "direction": "desc"
+  },
+  {
+    "order": "lower_price",
+    "attribute": "price",
+    "label": "Lower Price",
+    "direction": "asc"
+  }
+]

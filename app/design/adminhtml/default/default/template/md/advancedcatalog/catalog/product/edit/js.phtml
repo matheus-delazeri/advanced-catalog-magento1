@@ -1,0 +1,95 @@
+<?php
+$quickEditUrl = Mage::helper("adminhtml")->getUrl("adminhtml/advancedcatalog_attribute/edit", array("isAjax" => true));
+?>
+<script type="text/javascript">
+    class AdvancedQuickEdit {
+        static CLASS_QUICK_EDIT;
+        static el;
+        static gridObject;
+        static parentEl;
+        static quickEditEl;
+        static oldValue;
+
+        constructor(el) {
+            this.CLASS_QUICK_EDIT = "advanced-catalog-quick-edit"
+
+            this.el = el
+            this.parentEl = jQuery(this.el).parent()
+            this.quickEditEl = jQuery(`.${this.CLASS_QUICK_EDIT}`, this.parentEl)
+            this.oldValue = jQuery(this.quickEditEl).html()
+            this._setGridObject()
+            this._prepareQuickEditInput().then(() => {
+                this._waitKeyPress()
+            })
+
+        }
+
+        _setGridObject()
+        {
+            if (typeof super_product_linksJsObject != "undefined") {
+                this.gridObject = super_product_linksJsObject
+            } else if (typeof productGridJsObject != "undefined") {
+                this.gridObject = productGridJsObject
+            }
+        }
+
+        _prepareQuickEditInput() {
+            jQuery(`.${this.CLASS_QUICK_EDIT}-btn`, this.parentEl).hide()
+            jQuery(`.${this.CLASS_QUICK_EDIT}-save`, this.parentEl).show()
+            jQuery(`.${this.CLASS_QUICK_EDIT}-close`, this.parentEl).show()
+            return Promise.resolve(jQuery(this.quickEditEl).html(`
+                <input type='text' class='input-text advanced-catalog-quick-edit-value' value='${this.oldValue}'>
+            `))
+        }
+
+        _waitKeyPress() {
+            let $this = this
+            jQuery(`.${this.CLASS_QUICK_EDIT}-value`).on("keypress", function (e) {
+                if (e.which === 13) { $this._updateValue() }
+            })
+            jQuery(`.${this.CLASS_QUICK_EDIT}-save`).on("click", function (e) {
+                $this._updateValue()
+            })
+            jQuery(`.${this.CLASS_QUICK_EDIT}-close`).on("click", function (e) {
+                $this._reloadGrid()
+            })
+        }
+
+        _updateValue() {
+            let $this = this
+            jQuery.ajax({
+                url: "<?php echo $quickEditUrl?>",
+                method: "GET",
+                data: {
+                    entity_id: $this.quickEditEl.data("entity-id"),
+                    attribute: $this.quickEditEl.data("attribute"),
+                    value: jQuery("input", $this.quickEditEl).val()
+                },
+                success: function (data) {
+                    $this._reloadGrid()
+                }
+            })
+        }
+
+        _reloadGrid()
+        {
+            this.gridObject.doFilter()
+        }
+    }
+
+    jQuery(document).on("click", ".advanced-catalog-quick-edit-btn",function () {
+        new AdvancedQuickEdit(this)
+    })
+</script>
+<style type="text/css">
+    .advanced-catalog-quick-edit-value {
+        width: min-content !important;
+    }
+    .advanced-catalog-quick-edit-btn, .advanced-catalog-quick-edit-save, .advanced-catalog-quick-edit-close {
+        margin: auto 5px;
+        float: right;
+    }
+    .advanced-catalog-quick-edit-save, .advanced-catalog-quick-edit-close {
+        display: none;
+    }
+</style>

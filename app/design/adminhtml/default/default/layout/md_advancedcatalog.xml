@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<layout version="1.0">
+    <default>
+        <reference name="js">
+            <block type="core/template" name="advanced.catalog.quick.edit"
+                   template="md/advancedcatalog/catalog/product/edit/js.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss"><stylesheet>md/advancedcatalog/css/font-awesome-4.7.0/css/font-awesome.min.css</stylesheet></action>
+        </reference>
+    </default>
+    <adminhtml_catalog_product_configurable_new>
+        <reference name="content">
+            <block type="advancedcatalog/adminhtml_catalog_product_edit_tab_super_attribute"
+                   name="advanced.catalog.new.attribute"/>
+        </reference>
+    </adminhtml_catalog_product_configurable_new>
+    <adminhtml_catalog_product_configurable>
+        <reference name="js">
+            <block type="core/template" name="advanced.catalog.configurable.js"
+                   template="md/advancedcatalog/catalog/product/edit/super/js.phtml"/>
+        </reference>
+        <reference name="product_tabs">
+            <action method="removeTab" ifconfig="md_advancedcatalog/admin_create_product/quick_configurable">
+                <name>configurable</name>
+            </action>
+            <action method="addTab" ifconfig="md_advancedcatalog/admin_create_product/quick_configurable">
+                <name>advanced_configurable</name>
+                <block>advancedcatalog/adminhtml_catalog_product_edit_tab_super_associated</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_configurable>
+    <adminhtml_catalog_category_edit>
+        <reference name="category.edit">
+            <block name="advanced.catalog.category.buttons"
+                   type="advancedcatalog/adminhtml_catalog_category_edit_buttons">
+                <action method="addButtons" />
+            </block>
+        </reference>
+    </adminhtml_catalog_category_edit>
+    <adminhtml_advancedcatalog_catalog_category_bulkdelete>
+        <reference name="js">
+            <block type="core/template" name="advanced.catalog.category.js" template="md/advancedcatalog/catalog/category/js.phtml" />
+        </reference>
+        <reference name="content">
+            <block type="advancedcatalog/adminhtml_catalog_category_tree" name="advanced.catalog.category.bulk.delete" />
+        </reference>
+    </adminhtml_advancedcatalog_catalog_category_bulkdelete>
+    <adminhtml_advancedcatalog_catalog_product_associatedgridpopup>
+        <reference name="content">
+            <block type="core/template" name="advanced.catalog.header" template="md/advancedcatalog/header.phtml" />
+            <block type="advancedcatalog/adminhtml_catalog_product_edit_tab_super_associated_grid" name="advanced.catalog.product.associated.grid" />
+        </reference>
+        <remove name="menu" />
+        <remove name="footer" />
+        <remove name="header" />
+    </adminhtml_advancedcatalog_catalog_product_associatedgridpopup>
+</layout>

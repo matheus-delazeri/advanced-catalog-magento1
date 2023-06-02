@@ -1,0 +1,24 @@
+<?php
+$_indexUrl = Mage::helper("adminhtml")->getUrl();
+$_title = $this->getData("title") != ""
+    ? $this->getData("title")
+    : $this->__("Advanced Catalog");
+?>
+<div class="content-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-xs-9" style="">
+                <h3 class="icon-head head-adminhtml-action"><?= $this->_($_title) ?></h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="<?php echo $_indexUrl ?>">Dashboard</a>
+                    </li>
+                    <li>
+                        <span><?php echo $this->__($_title) ?></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-buttons col-sm-6 col-xs-3"></div>
+        </div>
+    </div>
+</div>

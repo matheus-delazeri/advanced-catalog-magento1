@@ -1,0 +1,133 @@
+<?php
+$allOptionsUrl = Mage::helper("adminhtml")->getUrl("adminhtml/advancedcatalog_attribute/getAllOptions");
+?>
+<script type="text/javascript">
+    function remove_super_option(el) {
+        el.remove()
+    }
+
+    class AssociationAttribute {
+        static ID_PREFIX;
+        static CLASS_OPTION;
+        static CLASS_GRID;
+
+        static name;
+        static el;
+        static attribute;
+        static options_grid;
+        static all_options;
+
+        constructor(el) {
+            this.ID_PREFIX = "advanced_super_attribute_"
+            this.NAME_PREFIX = "advanced_catalog[configurable]"
+            this.CLASS_OPTION = "advanced-attribute-option"
+            this.CLASS_GRID = "advanced-super-attribute-grid"
+
+            this.el = jQuery(el)
+            this.all_options = []
+            this.attributeId = this.el.attr("id").replace(this.ID_PREFIX, "")
+            this.name = `${this.NAME_PREFIX}[attributes][${this.attributeId}]`
+            this.options_grid = `${this.ID_PREFIX}${this.attributeId}_grid`
+            this._prepareOptionsGrid().then(() => {
+                this._addOptionOnKeyPress()
+            })
+        }
+
+        getAttribute() {
+            return this.el.attr("id").replace(this.ID_PREFIX, "")
+        }
+
+        _prepareOptionsGrid() {
+            let $this = this
+            let list_id = `${this.ID_PREFIX}${this.attributeId}_list`
+            this.el.attr("list", list_id)
+            return new Promise((resolve) => {
+                    $this._fetchAllOptions().then(all_options => {
+                        $this.all_options = all_options
+                        let options_HTML = ""
+                        for (let id in all_options) {
+                            options_HTML += `<option value="${all_options[id]}">${all_options[id]}</option>`
+                        }
+                        let datalist_HTML = ""
+                        if ($this.all_options.length !== 0) {
+                            datalist_HTML = `<datalist id="${list_id}">${options_HTML}</datalist>`
+                        }
+                        resolve($this.el.parent().append([
+                            datalist_HTML,
+                            `<div class="${$this.CLASS_GRID}" id='${$this.options_grid}'></div>`
+                        ]))
+                    })
+                }
+            )
+        }
+
+        _fetchAllOptions() {
+            return new Promise((resolve) => resolve(jQuery.ajax({
+                url: "<?php echo $allOptionsUrl?>",
+                method: "GET",
+                data: {
+                    attribute: this.attributeId
+                },
+                dataType: "json"
+            })))
+        }
+
+        _addOptionOnKeyPress() {
+            let $this = this
+            $this.el.on("keyup", function (e) {
+                let option = $this.el.val()
+                if (e.which !== 13) return;
+                if (option !== "") {
+                    jQuery(`#${$this.options_grid}`).append(`
+                    <input class="form-button ${$this.CLASS_OPTION}" id="${$this.name}[${option}]" name="${$this.name}[]"
+                        value="${option}" type="text" onclick="remove_super_option(this)" readonly>
+                    `)
+                    $this.el.val("")
+                }
+            })
+            jQuery(".advanced-super-quick-options", this.el.parent()).on("click", () => {
+                Object.keys($this.all_options).forEach((id, index) => {
+                    let _option = $this.all_options[id]
+                    jQuery(`#${$this.options_grid}`).append(`
+                        <input class="form-button ${$this.CLASS_OPTION}" id="${$this.name}[${_option}]" name="${$this.name}[]"
+                            value="${_option}" type="text" onclick="remove_super_option(this)" readonly>
+                        `)
+                    $this.el.val("")
+                })
+            })
+        }
+    }
+
+    jQuery(".association-attribute").each(function () {
+        new AssociationAttribute(this)
+    })
+</script>
+<style type="text/css">
+    .advanced-super-attribute-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 5px;
+        padding: 5px;
+    }
+
+    .advanced-attribute-option {
+        padding: 5px;
+        text-align: center;
+        color: #ffffff;
+        border: 0;
+        border-radius: 2px;
+        min-width: 0;
+    }
+
+    .advanced-attribute-option:hover {
+        background: #cb2d37;
+        -webkit-transition: background-color 100ms linear;
+        -ms-transition: background-color 100ms linear;
+        transition: background-color 100ms linear;
+    }
+
+    .advanced-super-quick-options {
+        float: right;
+        margin: -20px -10px 0 10px;
+    }
+</style>

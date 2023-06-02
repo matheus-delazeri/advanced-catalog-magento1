@@ -1,0 +1,13 @@
+<?php
+$bulkDeleteURL = Mage::helper("adminhtml")->getUrl("adminhtml/advancedcatalog_catalog_category/bulkDelete", array("isAjax" => true));
+?>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        jQuery("#advanced-catalog-delete-selected-categories").on("click", function () {
+            let categoryIds = jQuery("#product_categories").val()
+            let params = {category_ids: categoryIds}
+            let query = `?${jQuery.param(params)}`
+            window.location = `<?php echo $bulkDeleteURL ?>${query}`
+        })
+    })
+</script>

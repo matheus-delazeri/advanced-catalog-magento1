@@ -1,0 +1,15 @@
+<layout version="0.1.0">
+    <catalog_category_default translate="label">
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/md/advancedcatalog/styles.css</stylesheet></action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/md/advancedcatalog/styles.css</stylesheet></action>
+        </reference>
+        <reference name="catalog.leftnav">
+            <action method="setTemplate"><template>advancedcatalog/layer/view.phtml</template></action>
+        </reference>
+    </catalog_category_layered>
+</layout>
