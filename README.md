@@ -50,6 +50,11 @@
   </ol>
 </details>
 
+## Prerequisites
+- [jQuery](jquery.com/)
+- [Font Awesome](https://fontawesome.com/v4/icons/)
+
+Both must be available in the admin panel and the store's frontend.
 
 ## 🔧 Installing
 
